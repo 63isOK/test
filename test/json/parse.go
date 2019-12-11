@@ -2,8 +2,32 @@ package main
 
 import "fmt"
 
+type structc struct {
+	d, e int
+	f    string
+	g    []int
+	h    []string
+}
+
+type structn struct {
+	o float64
+	p string
+}
+
+type structj struct {
+	k *int
+	l float64
+	m []string
+	n structn
+}
+
 // Result is parse result
 type Result struct {
+	a string
+	b int
+	c structc
+	i bool
+	j structj
 }
 
 // JSONParse parse static json with encoding/json
