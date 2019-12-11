@@ -42,10 +42,10 @@ func TestParse(t *testing.T) {
 		checkParseResult(t, ret)
 	})
 
-	t.Run("gabs parse", func(t *testing.T) {
-		ret := GabsParse(json1)
-		checkParseResult(t, ret)
-	})
+	// t.Run("gabs parse", func(t *testing.T) {
+	//   ret := GabsParse(json1)
+	//   checkParseResult(t, ret)
+	// })
 }
 
 func TestWrite(t *testing.T) {
@@ -60,17 +60,17 @@ func TestWrite(t *testing.T) {
 	})
 }
 
-func TestDParse(t *testing.T) {
-	t.Run("json parse unknown type", func(t *testing.T) {
-		ret := JSONDParse(json1)
-		checkParseResult(t, ret)
-	})
-
-	t.Run("gabs parse unknown type", func(t *testing.T) {
-		ret := GabsDParse(json1)
-		checkParseResult(t, ret)
-	})
-}
+// func TestDParse(t *testing.T) {
+//   t.Run("json parse unknown type", func(t *testing.T) {
+//     ret := JSONDParse(json1)
+//     checkParseResult(t, ret)
+//   })
+//
+//   t.Run("gabs parse unknown type", func(t *testing.T) {
+//     ret := GabsDParse(json1)
+//     checkParseResult(t, ret)
+//   })
+// }
 
 func checkParseResult(t *testing.T, ret *Result) {
 	// t.Helper()
