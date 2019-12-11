@@ -1,38 +1,50 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 type structc struct {
-	d, e int
-	f    string
-	g    []int
-	h    []string
+	D, E int
+	F    string
+	G    []int
+	H    []string
 }
 
 type structn struct {
-	o float64
-	p string
+	O float64
+	P string
 }
 
 type structj struct {
-	k *int
-	l float64
-	m []string
-	n structn
+	K *int
+	L float64
+	M []string
+	N structn
 }
 
 // Result is parse result
 type Result struct {
-	a string
-	b int
-	c structc
-	i bool
-	j structj
+	A string `json:"a"`
+	B int
+	C structc
+	I bool
+	J structj
 }
 
 // JSONParse parse static json with encoding/json
 func JSONParse(s string) *Result {
-	return nil
+	var ret Result
+
+	err := json.Unmarshal([]byte(s), &ret)
+
+	if err != nil {
+		fmt.Printf("encoding/json parse failed: %s\n %s\n", s, err.Error())
+		return nil
+	}
+
+	return &ret
 }
 
 // GabsParse parse static json with gabs
@@ -61,5 +73,5 @@ func GabsDParse(s string) *Result {
 }
 
 func main() {
-	fmt.Println("vim-go")
+	fmt.Println("反序列化时，结构体的字段要是大写才能参与解码过程")
 }

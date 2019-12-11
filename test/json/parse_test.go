@@ -73,26 +73,26 @@ func TestDParse(t *testing.T) {
 }
 
 func checkParseResult(t *testing.T, ret *Result) {
-	t.Helper()
+	// t.Helper()
 
 	if ret == nil {
 		t.Fatal("parse failed, result is nil")
 	}
 
-	if ret.a != "b" ||
-		ret.b != 1 ||
-		ret.c.d != 2 ||
-		ret.c.e != 3 ||
-		ret.c.f != "4" ||
-		len(ret.c.g) != 5 ||
-		ret.c.h[0] != "6" ||
-		!ret.i ||
-		ret.j.k != nil ||
-		ret.j.l != 3.3 ||
-		ret.j.m[2] != "c" ||
-		ret.j.n.o != 4.4 ||
-		ret.j.n.p != "5.5" {
-		t.Fatal("parse failed, result is nil")
+	if ret.A != "b" ||
+		ret.B != 1 ||
+		ret.C.D != 2 ||
+		ret.C.E != 3 ||
+		ret.C.F != "4" ||
+		len(ret.C.G) != 5 ||
+		ret.C.H[0] != "6" ||
+		!ret.I ||
+		ret.J.K != nil ||
+		ret.J.L != 3.3 ||
+		ret.J.M[2] != "c" ||
+		ret.J.N.O != 4.4 ||
+		ret.J.N.P != "5.5" {
+		t.Fatalf("parse failed, result is %v", ret)
 	}
 }
 
