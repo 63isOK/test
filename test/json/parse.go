@@ -6,31 +6,32 @@ import (
 )
 
 type structc struct {
-	D, E int
-	F    string
-	G    []int
-	H    []string
+	D int      `json:"d"`
+	E int      `json:"e"`
+	F string   `json:"f"`
+	G []int    `json:"g"`
+	H []string `json:"h"`
 }
 
 type structn struct {
-	O float64
-	P string
+	O float64 `json:"o"`
+	P string  `json:"p"`
 }
 
 type structj struct {
-	K *int
-	L float64
-	M []string
-	N structn
+	K *int     `json:"k"`
+	L float64  `json:"l"`
+	M []string `json:"m"`
+	N structn  `json:"n"`
 }
 
 // Result is parse result
 type Result struct {
-	A string `json:"a"`
-	B int
-	C structc
-	I bool
-	J structj
+	A string  `json:"a"`
+	B int     `json:"b"`
+	C structc `json:"c"`
+	I bool    `json:"i"`
+	J structj `json:"j"`
 }
 
 // JSONParse parse static json with encoding/json
@@ -54,7 +55,35 @@ func GabsParse(s string) *Result {
 
 // JSONWrite write static json with encoding/json
 func JSONWrite() string {
-	return ""
+	v := Result{
+		A: "b",
+		B: 1,
+		C: structc{
+			D: 2,
+			E: 3,
+			F: "4",
+			G: []int{1, 2, 3, 4, 5},
+			H: []string{"6"},
+		},
+		I: true,
+		J: structj{
+			K: nil,
+			L: 3.3,
+			M: []string{"a", "b", "c", "d"},
+			N: structn{
+				O: 4.4,
+				P: "5.5",
+			},
+		},
+	}
+
+	b, err := json.Marshal(v)
+	if err != nil {
+		fmt.Println("encode failed ", err.Error())
+		return ""
+	}
+
+	return string(b)
 }
 
 // GabsWrite write static json with gabs
